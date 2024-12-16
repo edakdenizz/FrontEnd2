@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        .slider {
+            width: 300px;
+            height: 200px;
+            /* Slaytların görünmeyen kısımlarını gizler. */
+            overflow: hidden;
+
+            position: relative;
+        }
+
+        .slide {
+            width: 100%;
+            height: 100%;
+            /* Tüm slaytları aynı konuma yerleştirir. */
+            position: absolute;
+            top: 0;
+            left: 0;
+            /* Opaklık değişiminde yumuşak bir geçiş sağlar. */
+            opacity: 0;
+            transition: opacity 1s ease-in-out;
+        }
+
+        .slide.active {
+            /* Aktif slaytı görünür yapar. */
+            opacity: 1;
+            /* Aktif slayt diğerlerinin üzerinde görüntülenir */
+            z-index: 1;
+        }
+
+        .controls {
+            /* Kontrol düğmelerini yatayda ortalar. */
+            text-align: center;
+            /* Kontroller ile slayt gösterisi arasına boşluk ekler. */
+            margin-top: 10px;
+        }
+
+        button {
+            /* Düğmelere iç boşluk ekleyerek genişletir. */
+            padding: 10px 20px;
+            margin: 5px;
+            border: none;
+            background-color: #007BFF;
+            color: white;
+            /* Köşeleri yuvarlar. */
+            border-radius: 5px;
+            /* Fare imlecini el simgesine dönüştürür. */
+            cursor: pointer;
+        }
+
+        button:hover {
+            /* Kullanıcı fare ile üzerine geldiğinde arka plan rengini koyulaştırır. */
+            background-color: #0056b3;
+        }
+
+        .bgColor {
+            background-color: yellow;
+        }
+
+        .bgColor1 {
+            background-color: pink;
+        }
+
+        .bgColor2 {
+            background-color: green;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="slider">
+        <div class="slide active bgColor">
+            <h2>Slide 1</h2>
+            <p>Birinci slayt içerik.</p>
+
+
+        </div>
+        <div class="slide bgColor1">
+            <h2>Slide 2</h2>
+            <p>İkinci slayt içerik.</p>
+
+        </div>
+        <div class="slide bgColor2">
+            <h2>Slide 3</h2>
+            <p>Üçüncü slayt içerik.</p>
+        </div>
+
+    </div>
+
+    <div class="controls">
+        <button id="prev">Geri</button>
+        <button id="next">İleri</button>
+    </div>
+
+    <script src="app2.js"></script>
+</body>

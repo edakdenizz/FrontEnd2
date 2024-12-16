@@ -1,0 +1,340 @@
+/* GENERAL STYLES */
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    background: linear-gradient(135deg, #f6d365, #fda085);
+    color: #333;
+    overflow-x: hidden;
+    transition: background 0.5s ease, color 0.5s ease;
+}
+
+/* Light Mode */
+body.light-mode {
+    background-color: white;
+    color: black;
+}
+
+body.dark-mode {
+    background: linear-gradient(135deg, #3b0218, #1a1a1a); /* Koyu gri arka plan */
+    color: #e0e0e0; /* Açık gri yazı rengi */
+}
+
+body.dark-mode header {
+    background: #50132a; /* Başlık arka planı daha koyu */
+}
+
+body.dark-mode footer {
+    background: linear-gradient(135deg, #333, #444); /* Alt kısım için daha yumuşak geçiş */
+}
+
+body.dark-mode section {
+    background: rgba(45, 45, 45, 0.9); /* Bölüm arka planı daha koyu gri */
+    color: #f0f0f0; /* Açık renk yazılar */
+}
+
+body.dark-mode nav {
+    background: rgba(4, 4, 77, 0.9); /* Navigasyon arka planı daha koyu ton */
+}
+
+body.dark-mode nav a {
+    color: #bbb; /* Linkler için soluk gri renk */
+}
+
+body.dark-mode nav a:hover {
+    background-color: #50132a; /* Link hover rengi sıcak bir kırmızı */
+    color: #fff; /* Hover'da beyaz metin */
+}
+
+body.dark-mode footer .social-media a {
+    color: #bbb; /* Sosyal medya ikonları için gri renk */
+}
+
+body.dark-mode footer .social-media a:hover {
+    color: #50132a; /* Hover'da sıcak kırmızı */
+}
+
+body.dark-mode footer .contact-info a {
+    color: #61dafb; /* İletişim linkleri için mavi */
+}
+
+body.dark-mode footer .contact-info a:hover {
+    text-decoration: underline;
+    color: #501; /* Hover'da sıcak kırmızı */
+}
+
+
+/* THEME TOGGLE BUTTON */
+#theme-toggle {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    padding: 10px;
+    background-color: #444;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+/* IMAGE STYLES */
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin: 20px auto;
+    border-radius: 10px;
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+
+img:hover {
+    transform: scale(1.08);
+    box-shadow: 0 12px 20px rgba(0, 0, 0, 0.3);
+}
+
+/* HEADER STYLES */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    background: rgba(239, 138, 193, 0.9);
+    color: #fff;
+    font-size: 1.5em;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    backdrop-filter: blur(0.001px);
+    transition: background 0.3s ease-in-out;
+}
+
+header .logo img {
+    width: 100px;
+    height: 100px;
+    object-fit: contain;
+    transition: transform 0.3s ease;
+}
+
+header .logo:hover img {
+    transform: scale(1.1);
+}
+
+header h1 {
+    font-size: 24px;
+    font-weight: bold;
+    margin-left: 20px;
+}
+
+/* NAVIGATION */
+nav {
+    background: rgba(34, 34, 59, 0.9);
+    padding: 10px 20px;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+    backdrop-filter: blur(10px);
+}
+
+nav ul {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+nav ul li a {
+    position: relative;
+    display: block;
+    padding: 8px 16px;
+    text-decoration: none;
+    color: #61dafb;
+    font-weight: bold;
+    font-size: 1em;
+    transition: color 0.3s ease, transform 0.3s ease, background-color 0.3s ease;
+}
+
+nav ul li a:hover {
+    color: #f4f4f9;
+    transform: scale(1.1);
+    background-color: rgba(255, 255, 255, 0.2);
+}
+
+nav ul li a::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 3px;
+    background: linear-gradient(90deg, #ed89e3, #ff758c);
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    transition: width 0.4s ease;
+}
+
+nav ul li a:hover::after {
+    width: 100%;
+}
+
+/* Hamburger Menu */
+nav .menu-toggle {
+    display: none;
+    font-size: 30px;
+    background: none;
+    border: none;
+    color: #f4f4f9;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+@media (max-width: 768px) {
+    nav ul {
+        flex-direction: column;
+        align-items: center;
+        display: none;
+        background: rgba(72, 72, 105, 0.9);
+        padding: 10px 0;
+        border-radius: 5px;
+        position: absolute;
+        top: 60px;
+        left: 0;
+        right: 0;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        z-index: 999;
+        opacity: 0;
+        visibility: hidden;
+        transition: opacity 0.3s ease, visibility 0.3s ease;
+    }
+
+    nav ul.show {
+        display: flex;
+        opacity: 1;
+        visibility: visible;
+    }
+
+    nav .menu-toggle {
+        display: block;
+    }
+
+    nav .menu-toggle.open {
+        transform: rotate(90deg);
+    }
+}
+
+nav .menu-toggle:before {
+    content: "\2630"; /* Unicode for hamburger icon */
+    font-size: 30px;
+    color: #f4f4f9;
+}
+
+/* SECTION STYLES */
+section {
+    margin-bottom: 40px;
+    padding: 20px;
+    border-radius: 10px;
+    background: rgba(255, 255, 255, 0.85);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+    opacity: 0;
+    animation: fadeInUp 1s forwards;
+    transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+section p {
+    transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
+    opacity: 1;
+}
+
+section.hidden p {
+    opacity: 0;
+    transform: translateY(20px);
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* FOOTER */
+footer {
+    background: linear-gradient(135deg, #20232a, #333);
+    color: #fff;
+    padding: 40px 20px;
+    text-align: center;
+    border-top: 5px solid #ff758c;
+    transition: background 0.3s ease-in-out;
+}
+
+footer .footer-container {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+footer .social-media,
+footer .contact-info {
+    flex: 1 1 300px;
+    margin: 10px;
+}
+
+footer .social-media h3,
+footer .contact-info h3 {
+    font-size: 1.5em;
+    margin-bottom: 15px;
+    color: #ff758c;
+}
+
+footer .social-media a {
+    font-size: 1.5em;
+    color: #fff;
+    margin: 0 10px;
+    transition: color 0.3s ease, transform 0.3s ease;
+}
+
+footer .social-media a:hover {
+    color: #ff758c;
+    transform: scale(1.2);
+}
+
+footer .contact-info p {
+    font-size: 1em;
+    margin: 5px 0;
+}
+
+footer .contact-info a {
+    color: #61dafb;
+    text-decoration: none;
+}
+
+footer .contact-info a:hover {
+    text-decoration: underline;
+}
+footer p {
+    text-align: center;  /* Centers the text horizontally */
+    font-size: 0.9em;
+    margin-top: 20px;
+    opacity: 0.8;
+}
+
+@media (max-width: 768px) {
+    footer .footer-container {
+        flex-direction: column;
+        text-align: center;
+    }
+}
+
+/* FOCUS STATES */
+a:focus, button:focus {
+    outline: 3px solid #ff758c;
+    outline-offset: 2px;
+}
